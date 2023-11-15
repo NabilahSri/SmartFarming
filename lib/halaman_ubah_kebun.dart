@@ -9,6 +9,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_farming/bottom_navigation.dart';
 import 'package:smart_farming/halaman_kebun.dart';
 import 'package:smart_farming/koneksi.dart';
 
@@ -220,7 +221,7 @@ class _HalamanUbahKebunState extends State<HalamanUbahKebun> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => HalamanKebun(),
+              builder: (context) => SolomonNavigationBar(id: 1),
             ));
       } else {
         log('gagal edit kebun');

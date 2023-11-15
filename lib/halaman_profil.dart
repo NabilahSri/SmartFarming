@@ -32,10 +32,36 @@ class _HalamanProfilState extends State<HalamanProfil> {
         );
 
         if (response.statusCode == 200) {
-          prefs.remove('token');
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => HalamanMasuk()),
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Yakin ingin keluar?"),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      title: Text("Ya"),
+                      onTap: () {
+                        prefs.remove('token');
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HalamanMasuk()),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      title: Text("Tidak"),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
           );
         }
       } catch (error) {

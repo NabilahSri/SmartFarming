@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_farming/halaman_detail_artikel.dart';
 import 'package:smart_farming/koneksi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -268,9 +269,6 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                           return Builder(
                             builder: (BuildContext context) {
                               return GestureDetector(
-                                onTap: () {
-                                  _showItemDetails(item);
-                                },
                                 child: Stack(
                                   children: [
                                     Container(
@@ -405,47 +403,6 @@ class _HalamanUtamaState extends State<HalamanUtama> {
           ),
         ),
       ),
-    );
-  }
-
-  void _showItemDetails(Map<String, dynamic> selectedItem) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                selectedItem['judul'],
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              CachedNetworkImage(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                imageUrl: selectedItem['foto'],
-                placeholder: (context, url) => Container(
-                  width: 200.0,
-                  height: 200.0,
-                  color: Colors.grey,
-                ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 10),
-              Text(
-                selectedItem['deskripsi'],
-                style: TextStyle(fontSize: 18.0),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

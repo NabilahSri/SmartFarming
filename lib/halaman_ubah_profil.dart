@@ -106,7 +106,7 @@ class _HalamanUbahProfilState extends State<HalamanUbahProfil> {
           );
 
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => SolomonNavigationBar(id: 2),
+            builder: (context) => SolomonNavigationBar(id: 3),
           ));
 
           log('Profil berhasil diperbarui');
